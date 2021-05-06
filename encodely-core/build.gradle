@@ -1,4 +1,5 @@
 apply plugin: 'com.google.cloud.tools.jib'
+apply plugin: 'com.palantir.git-version'
 
 repositories {
     mavenCentral()
@@ -35,7 +36,7 @@ jib {
     }
     to {
         image = 'peavers/encodely'
-        tags = ["latest"]
+        tags = ["latest", gitVersion()]
         auth {
             username = System.getenv("DOCKER_USER")
             password = System.getenv("DOCKER_PASS")
