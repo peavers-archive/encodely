@@ -36,7 +36,7 @@ jobs:
           WITH_V: true
 
       - name: Get new tag
-        id: previoustag
+        id: new_tag
         uses: WyriHaximus/github-action-get-previous-tag@v1
         with:
           fallback: 1.0.0
@@ -45,12 +45,20 @@ jobs:
         id: build_changelog
         uses: mikepenz/release-changelog-builder-action@v1
 
+      - name: Create release
+        id: create_release
+        uses: actions/create-release@v1
+        with:
+          tag_name: ${{ steps.new_tag.outputs.tag }}
+          release_name: ${{ steps.new_tag.outputs.tag }}
+          body: ${{steps.build_changelog.outputs.changelog}}
+
       - name: Publish
         run: ./gradlew jib
 
-      - name: Create release
-        uses: actions/create-release@v1
+      - name: Rollback if failure
+        if: failure() && steps.create_release.outputs.id != ''
+        uses: author/action-rollback@stable
         with:
-          tag_name: ${{ steps.previoustag.outputs.tag }}
-          release_name: ${{ steps.previoustag.outputs.tag }}
-          body: ${{steps.build_changelog.outputs.changelog}}
+          id: ${{ steps.create_release.id }}
+          tag: ${{ steps.new_tag.outputs.tag }}
