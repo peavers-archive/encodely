@@ -1,0 +1,7 @@
+rootProject.name = 'encodely'
+include 'encodely-core'
+include 'encodely-job-manager'
+include 'encodely-docker-api'
+include 'encodely-common'
+
+include 'encodely-ui'

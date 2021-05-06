@@ -1,0 +1,42 @@
+.material-icons {
+  &.done {
+    color: #28a745;
+  }
+
+  &.running {
+    color: rgb(219, 171, 10);
+  }
+
+  &.error {
+    color: rgb(179, 86, 27);
+  }
+
+  &.aborted {
+    color: rgb(179, 86, 27);
+  }
+}
+
+.lds-dual-ring {
+  display: inline-block;
+}
+
+.lds-dual-ring:after {
+  animation: lds-dual-ring 1.2s linear infinite;
+  border: 2px solid rgb(219, 171, 10);
+  border-color: rgb(219, 171, 10) transparent rgb(219, 171, 10) transparent;
+  border-radius: 50%;
+  content: ' ';
+  display: block;
+  height: 20px;
+  width: 20px;
+}
+
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

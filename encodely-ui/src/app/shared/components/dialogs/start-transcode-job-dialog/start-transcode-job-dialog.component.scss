@@ -1,0 +1,35 @@
+.mat-dialog-title {
+  margin: 0;
+}
+
+.control {
+  margin-bottom: 0;
+}
+
+.input {
+  transition-property: box-shadow, border-color;
+  transition-duration: 400ms;
+  border: 2px solid rgb(231, 231, 231);
+  border-radius: 6px;
+  font-size: 14px;
+
+  &:focus,
+  &:active {
+    border: 2px solid #333;
+  }
+
+  &:hover {
+    box-shadow: rgba(0, 0, 0, 0.075) 0 3.168px 3.96px 0;
+  }
+}
+
+.input-hint {
+}
+
+.label {
+  font-weight: 400;
+}
+
+.title.is-5 {
+  margin-bottom: 10px;
+}

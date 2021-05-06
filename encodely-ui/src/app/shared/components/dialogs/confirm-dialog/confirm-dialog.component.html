@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>{{ title }}</h1>
+
+<div mat-dialog-content>
+  <div class="columns is-multiline">
+    <div class="column is-12">{{ message }}</div>
+  </div>
+</div>
+
+<div mat-dialog-actions>
+  <button (click)="onNoClick()" mat-button>Not yet</button>
+
+  <button (click)="submit()" [mat-dialog-close]="true" mat-button color="primary">Ok</button>
+</div>

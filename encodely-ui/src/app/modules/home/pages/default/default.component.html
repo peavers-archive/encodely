@@ -1,0 +1,64 @@
+<div class="page-layout" *ngIf="jobs$ | async as jobs">
+  <h1 class="header-title">Workers</h1>
+
+  <table class="table" *ngIf="jobs.length != 0; else noRunningJobs">
+    <tr *ngFor="let job of jobs">
+      <td class="is-narrow is-align-top">
+        <app-job-status-icon [job]="job"></app-job-status-icon>
+      </td>
+
+      <td>
+        <h2>{{ job.name }}</h2>
+        <h3>Job: {{ job.id }}</h3>
+      </td>
+
+      <td class="is-narrow">
+          <ul>
+            <li>
+              <svg class="svg-icon icon-calendar" height="16" viewBox="0 0 16 16" version="1.1" width="16"
+                   aria-hidden="true">
+                <path
+                  fill-rule="evenodd"
+                  d="M4.75 0a.75.75 0 01.75.75V2h5V.75a.75.75 0 011.5 0V2h1.25c.966 0 1.75.784 1.75 1.75v10.5A1.75 1.75 0 0113.25 16H2.75A1.75 1.75 0 011 14.25V3.75C1 2.784 1.784 2 2.75 2H4V.75A.75.75 0 014.75 0zm0 3.5h8.5a.25.25 0 01.25.25V6h-11V3.75a.25.25 0 01.25-.25h2zm-2.25 4v6.75c0 .138.112.25.25.25h10.5a.25.25 0 00.25-.25V7.5h-11z"
+                ></path>
+              </svg>
+              <span class="meta-text">{{ job.startTime | amTimeAgo }}</span>
+            </li>
+            <li>
+              <svg class="svg-icon icon-stopwatch" height="16" viewBox="0 0 16 16" version="1.1" width="16"
+                   aria-hidden="true">
+                <path
+                  fill-rule="evenodd"
+                  d="M5.75.75A.75.75 0 016.5 0h3a.75.75 0 010 1.5h-.75v1l-.001.041a6.718 6.718 0 013.464 1.435l.007-.006.75-.75a.75.75 0 111.06 1.06l-.75.75-.006.007a6.75 6.75 0 11-10.548 0L2.72 5.03l-.75-.75a.75.75 0 011.06-1.06l.75.75.007.006A6.718 6.718 0 017.25 2.541a.756.756 0 010-.041v-1H6.5a.75.75 0 01-.75-.75zM8 14.5A5.25 5.25 0 108 4a5.25 5.25 0 000 10.5zm.389-6.7l1.33-1.33a.75.75 0 111.061 1.06L9.45 8.861A1.502 1.502 0 018 10.75a1.5 1.5 0 11.389-2.95z"
+                ></path>
+              </svg>
+              <span class="meta-text">{{ getDuration(job) }}</span>
+            </li>
+          </ul>
+      </td>
+
+      <td class="td-action">
+        <div class="is-pulled-right">
+          <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>more_horiz</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu" xPosition="before">
+            <button mat-menu-item (click)="openJobDetails(job)">View #{{ job.id }}</button>
+            <button mat-menu-item (click)="stopJob(job)" [disabled]="job.status != 'RUNNING'">Stop worker</button>
+          </mat-menu>
+        </div>
+      </td>
+    </tr>
+  </table>
+
+  <ng-template #noRunningJobs>
+    <div class="columns is-multiline system">
+      <div class="column is-12 has-text-centered">
+        <div class="information">
+          <h2>Workers have nothing to do</h2>
+          <p>When a worker starts transcoding you'll see it right here.</p>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>

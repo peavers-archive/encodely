@@ -1,0 +1,24 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+*:focus {
+  outline: none;
+}
+
+.page-layout {
+  margin-left: -23px;
+  margin-top: -25px;
+  min-width: 1024px;
+  padding: 60px 6% 120px;
+
+  .header-title {
+    margin-bottom: 27px;
+    font-size: 30px;
+    line-height: 40px;
+    letter-spacing: -1px;
+    color: #294661;
+  }
+}

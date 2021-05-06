@@ -1,0 +1,52 @@
+@import '~@angular/material/theming';
+
+$encodely-typography: mat-typography-config(
+  $font-family: '-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Helvetica Neue, Arial, sans-serif'
+);
+
+$encodely-primary: mat-palette($mat-light-blue, 900, 900, A100);
+$encodely-accent: mat-palette($mat-light-blue, 500, 900, A100);
+$encodely-warn: mat-palette($mat-deep-orange);
+$encodely-theme: mat-light-theme($encodely-primary, $encodely-accent, $encodely-warn);
+
+@include angular-material-theme($encodely-theme);
+
+@include angular-material-typography($encodely-typography);
+
+.mat-app-background {
+  min-height: 100% !important;
+}
+
+.mat-dialog-content {
+  max-height: 100vh !important;
+  overflow: visible !important;
+}
+
+.mat-dialog-actions {
+  float: right !important;
+  padding: 20px 0 !important;
+}
+
+.mat-form-field {
+  width: 100% !important;
+}
+
+.mat-raised-button {
+  border-radius: 0 !important;
+}
+
+mat-progress-bar .mat-progress-bar-buffer {
+  background: #e4e8eb;
+}
+
+.mat-progress-bar-fill::after {
+  background: #bababa;
+}
+
+.mat-tab-header {
+  margin-bottom: 55px;
+}
+
+.mat-tab-body-content {
+  overflow: hidden !important;
+}

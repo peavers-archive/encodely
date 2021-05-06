@@ -1,0 +1,15 @@
+<ng-template [ngIf]="job.status === 'RUNNING'">
+  <div class="lds-dual-ring"></div>
+</ng-template>
+
+<ng-template [ngIf]="job.status === 'DONE'">
+  <mat-icon class="material-icons done">check_circle</mat-icon>
+</ng-template>
+
+<ng-template [ngIf]="job.status === 'ABORT'">
+  <mat-icon class="material-icons aborted">error</mat-icon>
+</ng-template>
+
+<ng-template [ngIf]="job.status === 'ERROR'">
+  <mat-icon class="material-icons error">error</mat-icon>
+</ng-template>

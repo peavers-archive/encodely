@@ -1,0 +1,23 @@
+<div class="page-layout">
+  <h1 class="header-title">Manual jobs</h1>
+
+  <div class="columns is-multiline system">
+    <div class="column is-12 has-text-centered">
+      <div class="information">
+        <h2>Scan directory</h2>
+        <p>Scan your current input directory for any media files.</p>
+
+        <button mat-raised-button (click)="startScanJob()" color="primary">Start</button>
+      </div>
+    </div>
+
+    <div class="column is-12 has-text-centered">
+      <div class="information">
+        <h2>Transcode files</h2>
+        <p>Transcode all media files found in the directory.</p>
+
+        <button mat-raised-button (click)="startTranscodeJob()" color="primary">Start</button>
+      </div>
+    </div>
+  </div>
+</div>

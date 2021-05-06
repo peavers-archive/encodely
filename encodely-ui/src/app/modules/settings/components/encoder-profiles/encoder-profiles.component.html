@@ -1,0 +1,49 @@
+<div class="columns is-multiline">
+  <div class="column is-2">
+    <h2 class="header">Default</h2>
+  </div>
+  <div class="column is-10">
+    <div *ngIf="encoderProfile !== undefined">
+      <div class="input-select-wrap">
+        <label>Encoder profile</label>
+
+        <ng-select2 [data]="select2OptionData" (valueChanged)="setEncoderProfileDefault($event)"></ng-select2>
+
+        <label class="input-hint">
+          The default encoder profile is used for automatic transcoding of media that lands in the input directory.
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="column is-12">
+    <hr />
+  </div>
+
+  <div class="column is-2">
+    <h2 class="header">Profiles</h2>
+  </div>
+  <div class="column is-10">
+    <div class="information">
+      <h2>Get started creating encoder profiles</h2>
+      <p>
+        Encoder profiles determine how each media file is going to be encoded. This is what will decide how long each transcode will take,
+        as well as the output quality.
+      </p>
+
+      <button mat-raised-button color="primary" (click)="createNewEncoderProfile()">Create Encoder Profile</button>
+    </div>
+
+    <ul>
+      <li *ngFor="let encoderProfile of encoderProfiles" (click)="editEncoderProfile(encoderProfile)">
+        <div class="encoder">
+          <h2>{{ encoderProfile.name }}</h2>
+          <p>Container: {{ encoderProfile.dockerImage }}</p>
+          <p>Command: {{ encoderProfile.command }}</p>
+        </div>
+
+        <hr />
+      </li>
+    </ul>
+  </div>
+</div>

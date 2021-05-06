@@ -1,0 +1,44 @@
+<form [formGroup]="formGroup">
+  <div class="columns is-multiline">
+    <div class="column is-2">
+      <h2 class="header">SOCAT</h2>
+    </div>
+    <div class="column is-10">
+      <div class="field">
+        <label class="label">Command</label>
+        <div class="control">
+          <label>
+            <input formControlName="socatCommand" class="input" (blur)="save('socatCommand')" />
+          </label>
+          <div class="input-hint">
+            SOCAT is used to allow the docker-java library to easily talk to the docker service. Probably don't touch this command unless
+            you really know what you're doing.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="column is-12">
+      <hr />
+    </div>
+
+    <div class="column is-2">
+      <h2 class="header">Containers</h2>
+    </div>
+    <div class="column is-10">
+      <div class="field">
+        <label class="label">Prefix</label>
+        <div class="control">
+          <label>
+            <input formControlName="containerPrefix" class="input" (blur)="save('containerPrefix')" />
+          </label>
+          <div class="input-hint">
+            Prefix all containers with this value. Is used to start/stop containers so make sure other containers won't contain this. Note:
+            If you change this while the SOCAT or other containers are running, you'll need to manually stop them before restarting the
+            application.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,73 @@
+<div class="level">
+  <div class="level-left">
+    <div class="level-item">
+      <h1 mat-dialog-title>Encoder profile</h1>
+    </div>
+  </div>
+  <div class="level-right" *ngIf="encoderProfile.id">
+    <div class="level-item">
+      <button mat-icon-button (click)="deleteEncoderProfile()" [matTooltip]="'Delete this profile'">
+        <mat-icon>delete_outline</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div mat-dialog-content>
+  <form [formGroup]="formGroup">
+    <div class="field">
+      <label class="label">Name</label>
+      <div class="control">
+        <label>
+          <input formControlName="name" class="input" />
+        </label>
+        <div class="input-hint">A name to help you identify this encoder profile. Has no effect on any operations.</div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">FFMPEG command</label>
+      <div class="control">
+        <label>
+          <input formControlName="command" class="input" />
+        </label>
+        <div class="input-hint">The full ffmpeg command. Use $input and $output values where you'd normally add file names.</div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Output extension</label>
+      <div class="control">
+        <label>
+          <input formControlName="extension" class="input" />
+        </label>
+        <div class="input-hint">Extension of the output file, minus the dot.</div>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="input-select-wrap" *ngIf="select2OptionData.length > 0">
+        <label class="label">Choose container to use for this transcode profile</label>
+
+        <ng-select2 [data]="select2OptionData" [options]="{ width: '100%' }" formControlName="dockerImage"></ng-select2>
+
+        <div class="input-hint">If using an Nvidia based container make sure you've already installed nvidia-docker.</div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Docker runtime</label>
+      <div class="control">
+        <label>
+          <input formControlName="dockerRuntime" class="input" />
+        </label>
+        <div class="input-hint">Usually left blank. Use 'nvidia' if settings a Nvidia based container.</div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-raised-button (click)="onSave()" color="primary">Save</button>
+</div>

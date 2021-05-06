@@ -1,0 +1,52 @@
+<div class="page-layout" *ngIf="jobs$ | async as jobs">
+  <div class="level">
+    <div class="level-left">
+      <div class="level-item">
+        <h1 class="header-title">History</h1>
+      </div>
+    </div>
+    <div class="level-right" *ngIf="jobs.length > 0">
+      <div class="level-item">
+        <button mat-raised-button color="primary" (click)="deleteAll()">Clear history</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="columns is-multiline" *ngIf="jobs.length != 0; else noJobs">
+    <div class="column is-12">
+      <table class="table" aria-describedby="Past jobs">
+        <thead>
+          <tr>
+            <th scope="col">Reference</th>
+            <th scope="col">Name</th>
+            <th scope="col">Start time</th>
+            <th scope="col">End time</th>
+            <th scope="col" class="has-text-centered">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let job of jobs" (click)="openJobDetails(job)" class="is-clickable">
+            <td>{{ job.id }}</td>
+            <td>{{ job.name }}</td>
+            <td>{{ job.startTime | amCalendar }}</td>
+            <td>{{ job.endTime | amCalendar }}</td>
+            <td class="has-text-centered">
+              <app-job-status-icon [job]="job"></app-job-status-icon>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <ng-template #noJobs>
+    <div class="columns is-multiline">
+      <div class="column is-12">
+        <div class="information">
+          <h2>Job history</h2>
+          <p>Once a job is complete you can see its outcome here.</p>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>

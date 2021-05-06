@@ -1,0 +1,29 @@
+<h1 mat-dialog-title>Start transcode job</h1>
+
+<div mat-dialog-content>
+  <div class="columns is-multiline">
+    <div class="column is-12">
+      <p>Choose a profile to use for this transcode session</p>
+
+      <div class="field" *ngIf="encoderProfiles">
+        <label class="label"></label>
+        <div class="control">
+          <mat-form-field appearance="fill">
+            <mat-label>Encode profile</mat-label>
+            <mat-select [(value)]="profile">
+              <mat-option *ngFor="let encoderProfile of encoderProfiles" [value]="encoderProfile">
+                {{ encoderProfile.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div class="input-hint">This profile will be used to transcode every media file found during the scan job.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Not yet</button>
+  <button mat-raised-button [mat-dialog-close]="profile" color="primary">Start</button>
+</div>

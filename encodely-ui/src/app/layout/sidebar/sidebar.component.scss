@@ -1,0 +1,49 @@
+.sidebar {
+  width: 180px;
+  min-height: 100%;
+  max-width: 180px;
+  height: 100vh;
+  min-width: 180px;
+  padding-top: 30px;
+  vertical-align: top;
+  background: #fbfbfc;
+  border-right: 1px solid #e9ecef;
+  padding-left: 1px;
+}
+
+.pages {
+  margin-top: 50px;
+}
+
+.page {
+  margin-bottom: 30px;
+  cursor: pointer;
+}
+
+.page-link {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 30px;
+  padding-left: 7px;
+  color: #294661;
+  text-decoration: none;
+  opacity: 0.6;
+  box-sizing: border-box;
+}
+
+.page-icon {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  vertical-align: middle;
+}
+
+.page-title {
+  margin-left: 3px;
+  font-size: 13px;
+}
+
+.is-active {
+  opacity: 1;
+}

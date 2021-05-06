@@ -1,0 +1,47 @@
+apply plugin: 'com.google.cloud.tools.jib'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+//    implementation project(':encodely-ui')
+    implementation project(':encodely-common')
+    implementation project(':encodely-job-manager')
+    implementation project(':encodely-docker-api')
+
+    // Spring
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-websocket'
+    implementation 'org.springframework.boot:spring-boot-starter-cache'
+
+    // Hacked in to give easy access to Restarter.getInstance().restart()
+    implementation 'org.springframework.boot:spring-boot-devtools'
+
+    // Misc
+    implementation 'com.github.ben-manes.caffeine:caffeine'
+
+    runtimeOnly 'com.h2database:h2'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+jib {
+    from {
+        image = 'peavers/encodely-base'
+    }
+    to {
+        image = 'peavers/encodely'
+        tags = ["latest"]
+        auth {
+            username = System.getenv("DOCKER_USER")
+            password = System.getenv("DOCKER_PASS")
+        }
+    }
+    container {
+        ports = ['8080']
+    }
+}

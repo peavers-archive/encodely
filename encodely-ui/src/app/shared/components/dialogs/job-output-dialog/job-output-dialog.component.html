@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>Job data</h1>
+
+<div mat-dialog-content>
+  <div class="columns is-multiline">
+    <div class="column is-12">
+      <pre>{{ job | prettyJson }}</pre>
+    </div>
+  </div>
+</div>
+
+<div mat-dialog-actions>
+  <button [mat-dialog-close]="true" mat-button>Ok</button>
+</div>

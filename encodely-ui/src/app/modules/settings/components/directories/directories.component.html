@@ -1,0 +1,63 @@
+<form [formGroup]="formGroup">
+  <div class="columns is-multiline">
+    <div class="column is-2">
+      <h2 class="header">Folders</h2>
+    </div>
+    <div class="column is-10">
+      <div class="field">
+        <label class="label">Input directory</label>
+        <div class="control">
+          <label>
+            <input formControlName="input" class="input" (blur)="save('input')" />
+          </label>
+          <div class="input-hint">Root directory to scan from. This is recursive and will find all media files under it.</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Output directory</label>
+        <div class="control">
+          <label>
+            <input formControlName="output" class="input" (blur)="save('output')" />
+          </label>
+          <div class="input-hint">Where newly transcode videos will be saved.</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Excluded directories</label>
+        <div class="control">
+          <label>
+            <input formControlName="exclude" class="input" (blur)="save('exclude')" />
+          </label>
+          <div class="input-hint">
+            Comma separated list, will ignore these paths while scanning for media. If your output directory is a child of your input
+            directory, you probably want to add it here.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="column is-12">
+      <hr />
+    </div>
+
+    <div class="column is-2">
+      <h2 class="header">Other</h2>
+    </div>
+    <div class="column is-10">
+      <div class="field">
+        <label class="label">Minimum filesize</label>
+        <div class="control">
+          <label>
+            <input formControlName="minFileSize" class="input" (blur)="save('minFileSize')" />
+          </label>
+          <div class="input-hint">
+            <p>Ignore all files smaller than this value. Value is in bytes, for example 10485760 is about 100mb</p>
+            <p>Set to -1 to disable a minimum filesize check</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

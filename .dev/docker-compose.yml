@@ -1,0 +1,20 @@
+version: '3.7'
+services:
+
+  encodely:
+    image: peavers/encodely:latest
+    container_name: encodely
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    volumes:
+      - /home/peavers/Movies:/home/peavers/Movies
+      - /var/run/docker.sock:/var/run/docker.sock:rw
+      - encodely-data:/.data
+    logging:
+      options:
+        max-size: "2m"
+        max-file: "5"
+
+volumes:
+  encodely-data:

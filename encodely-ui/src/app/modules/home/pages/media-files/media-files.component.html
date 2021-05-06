@@ -1,0 +1,60 @@
+<div class="section" *ngIf="mediaFiles$ | async as mediaFiles">
+  <div class="container" *ngIf="mediaFiles.length != 0; else noMediaFiles">
+    <div class="columns is-multiline">
+      <div class="column is-12">
+        <div class="level">
+          <div class="level-left">
+            <div class="level-item">
+              <p class="title is-4">Media files</p>
+            </div>
+          </div>
+          <div class="level-right">
+            <div class="level-item">
+              <button mat-icon-button mat-raised-button [matTooltip]="'Start Scan Job'" (click)="startScanJob()">
+                <mat-icon>refresh</mat-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="column is-12">
+        <div class="card">
+          <table class="table" aria-describedby="List of media files found from scanning">
+            <thead>
+              <tr>
+                <th scope="col">Path</th>
+                <th scope="col">Size</th>
+                <th scope="col" class="has-text-centered">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let mediaFile of mediaFiles">
+                <td class="overflow-hidden">{{ mediaFile.path }}</td>
+                <td>{{ mediaFile.size | fileSize }}</td>
+                <td class="has-text-centered">
+                  <div *ngIf="mediaFile.processed">
+                    <mat-icon class="material-icons-outlined complete" [matTooltip]="'Processed'">check_circle_outline</mat-icon>
+                  </div>
+                  <div *ngIf="!mediaFile.processed">
+                    <mat-icon class="material-icons-outlined" [matTooltip]="'Not yet started'">not_started</mat-icon>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #noMediaFiles>
+    <div class="container">
+      <div class="columns is-multiline">
+        <div class="column is-6 is-offset-3 has-text-centered">
+          <p class="title">No media files</p>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>

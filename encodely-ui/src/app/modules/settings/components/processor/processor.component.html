@@ -1,0 +1,46 @@
+<form [formGroup]="formGroup">
+  <div class="columns is-multiline">
+    <div class="column is-2">
+      <h2 class="header">
+        Post <br />
+        processing
+      </h2>
+    </div>
+    <div class="column is-10">
+      <div class="field">
+        <label class="label">Delete source file after transcode</label>
+        <div class="control">
+          <mat-slide-toggle formControlName="deleteSource" (change)="save('deleteSource')" color="primary"></mat-slide-toggle>
+          <div class="input-hint">
+            Should the original file be deleted, make sure you've checked everything works as expected before enabling this.
+          </div>
+        </div>
+      </div>
+
+      <hr />
+
+      <div class="field">
+        <label class="label">Rename output files</label>
+        <div class="control">
+          <mat-slide-toggle formControlName="cleanFilename" (change)="save('cleanFilename')" color="primary"></mat-slide-toggle>
+          <div class="input-hint">
+            Rename the output file. This will unify the naming convention of all output files. See the readme for more details about the
+            output format.
+          </div>
+        </div>
+      </div>
+
+      <hr />
+
+      <div class="field">
+        <label class="label">Overwrite existing files</label>
+        <div class="control">
+          <mat-slide-toggle formControlName="overwrite" (change)="save('overwrite')" color="primary"></mat-slide-toggle>
+          <div class="input-hint">
+            If a file with the same output name and extension already exists in the output directory, overwrite it.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
