@@ -55,7 +55,7 @@
     "protractor": "~7.0.0",
     "sonarqube-scanner": "^2.8.0",
     "sort-package-json": "^1.46.0",
-    "stylelint": "^13.7.2",
+    "stylelint": "^15.10.1",
     "stylelint-config-standard": "^21.0.0",
     "stylelint-order": "^4.1.0",
     "stylelint-scss": "^3.18.0",
