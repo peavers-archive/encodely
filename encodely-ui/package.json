@@ -27,7 +27,7 @@
     "jquery": "^3.6.0",
     "moment": "^2.29.1",
     "ng-select2": "^1.2.5",
-    "ngx-moment": "^5.0.0",
+    "ngx-moment": "^6.0.2",
     "ngx-webstorage-service": "^4.1.0",
     "rxjs": "~6.6.6",
     "select2": "^4.1.0-rc.0",
