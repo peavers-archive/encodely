@@ -51,7 +51,7 @@
     "karma-coverage": "~2.0.3",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "^1.5.0",
-    "prettier": "2.2.1",
+    "prettier": "3.0.0",
     "protractor": "~7.0.0",
     "sonarqube-scanner": "^2.8.0",
     "sort-package-json": "^1.46.0",
