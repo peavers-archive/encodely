@@ -29,7 +29,7 @@
     "ng-select2": "^1.2.5",
     "ngx-moment": "^5.0.0",
     "ngx-webstorage-service": "^4.1.0",
-    "rxjs": "~6.6.6",
+    "rxjs": "~6.6.7",
     "select2": "^4.1.0-rc.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.4"
