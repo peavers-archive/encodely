@@ -54,7 +54,7 @@
     "prettier": "2.2.1",
     "protractor": "~7.0.0",
     "sonarqube-scanner": "^2.8.0",
-    "sort-package-json": "^1.46.0",
+    "sort-package-json": "^2.6.0",
     "stylelint": "^13.7.2",
     "stylelint-config-standard": "^21.0.0",
     "stylelint-order": "^4.1.0",
