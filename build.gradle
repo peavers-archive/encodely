@@ -43,7 +43,7 @@ configure(subprojects.findAll {it.name != 'encodely-ui'}) {
 
     dependencies {
         // Apache
-        implementation 'commons-io:commons-io:2.8.0'
+        implementation 'commons-io:commons-io:2.14.0'
         implementation 'org.apache.commons:commons-lang3:3.12.0'
         implementation 'org.apache.commons:commons-exec:1.3'
 
